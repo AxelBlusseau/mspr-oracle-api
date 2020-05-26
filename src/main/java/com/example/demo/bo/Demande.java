@@ -27,7 +27,7 @@ public class Demande implements Serializable {
     @Column(name = "DATEENLEVEMENT")
     private Date dateElevement;
     @Column(name = "SIRET")
-    private Integer siret;
+    private Long siret;
     @Column(name = "NOTOURNEE")
     private Integer noTournee;
     @Column(name = "NOSITE")

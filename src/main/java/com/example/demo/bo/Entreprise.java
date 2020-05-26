@@ -19,15 +19,15 @@ public class Entreprise implements Serializable {
 
     @Id
     @Column(name = "SIRET")
-    private Integer id;
+    private Long id;
     @Column(name = "RAISONSOCIALE")
     private String raisonSociale;
     @Column(name = "NORUENNTR")
     private Integer noruenntr;
-    @Column(name = "RUENNTR")
+    @Column(name = "RUEENTR")
     private String rueentr;
     @Column(name = "NOTEL")
-    private Character notel;
+    private String notel;
     @Column(name = "CONTACT")
     private String contact;
     @Column(name = "NOVILLE")
