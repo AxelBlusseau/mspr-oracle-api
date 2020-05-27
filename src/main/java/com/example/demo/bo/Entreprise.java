@@ -22,8 +22,8 @@ public class Entreprise implements Serializable {
     private Long id;
     @Column(name = "RAISONSOCIALE")
     private String raisonSociale;
-    @Column(name = "NORUENNTR")
-    private Integer noruenntr;
+    @Column(name = "NORUEENTR")
+    private Integer norueentr;
     @Column(name = "RUEENTR")
     private String rueentr;
     @Column(name = "NOTEL")
@@ -38,7 +38,7 @@ public class Entreprise implements Serializable {
         final StringBuilder sb = new StringBuilder("Entreprise{");
         sb.append("siret=").append(id);
         sb.append(", raisonsociale=").append(raisonSociale);
-        sb.append(", noruenntr=").append(noruenntr);
+        sb.append(", norueentr=").append(norueentr);
         sb.append(", rueentr=").append(rueentr);
         sb.append(", notel=").append(notel);
         sb.append(", contact=").append(contact);
