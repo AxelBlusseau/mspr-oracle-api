@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "infoDemande", produces = "application/json")
+@RequestMapping(produces = "application/json")
 public class DemandeEXP {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @GetMapping
+    @GetMapping(path = "infoDemande")
     public ResponseEntity<List<InfoDemande>> readInfoDemande(@RequestParam Integer idDemande) {
 
         String requete = "select e.raisonsociale, t.*, dd.quantiteenlevee, td.nomtypedechet from demande d join entreprise e on d.siret = e.siret join tournee t on d.notournee = t.notournee join detaildemande dd on d.nodemande = dd.nodemande join typedechet td on dd.notypedechet = td.notypedechet where d.nodemande = ?";
@@ -41,6 +41,26 @@ public class DemandeEXP {
         });
 
         return ResponseEntity.ok(lstInfoDemande);
+    }
+
+    @GetMapping(path = "demandeNonAffectee")
+    public ResponseEntity<List<Demande>> readDemandeNoTournee() {
+
+        String requete = "select * from demande where notournee is null\n";
+
+        List<Demande> lstDemande = this.jdbcTemplate.query(requete, new Object[] {}, (result, row) -> {
+            Demande demande = new Demande();
+
+            demande.setId(result.getInt( "NODEMANDE"));
+            demande.setSiret(result.getLong( "SIRET"));
+            demande.setNoSite(result.getInt( "NOSITE"));
+            demande.setDateDemande(result.getDate( "DATEDEMANDE"));
+            demande.setDateElevement(result.getDate( "DATEENLEVEMENT"));
+
+            return demande;
+        });
+
+        return ResponseEntity.ok(lstDemande);
     }
 
 }
