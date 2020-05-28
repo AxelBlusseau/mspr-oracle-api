@@ -40,6 +40,7 @@ public class Employe implements Serializable {
         final StringBuilder sb = new StringBuilder("Employe{");
         sb.append("noemploye=").append(id);
         sb.append(", nom=").append(nom);
+        sb.append(", prenom=").append(prenom);
         sb.append(", dateembauche=").append(dateembauche);
         sb.append(", datenaiss=").append(datenaiss);
         sb.append(", salaire=").append(salaire);
