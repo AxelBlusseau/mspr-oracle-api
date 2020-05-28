@@ -13,5 +13,7 @@ public class EmployeTournee {
     private Employe employe;
 
     private Integer nbTournee;
+
+    private String dateTournee;
     
 }
