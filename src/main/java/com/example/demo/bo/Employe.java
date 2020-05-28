@@ -22,6 +22,8 @@ public class Employe implements Serializable {
     private String nom;
     @Column(name = "PRENOM")
     private String prenom;
+    @Column(name = "PASSWORD")
+    private String password;
     @Column(name = "DATENAISS")
     private Date datenaiss;
     @Column(name = "DATEEMBAUCHE")

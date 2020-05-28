@@ -8,14 +8,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity(name = "tournee")
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name="TOURNEE")
 public class Tournee implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NOTOURNEE")
     private Integer id;
     @Column(name = "DATETOURNEE")
