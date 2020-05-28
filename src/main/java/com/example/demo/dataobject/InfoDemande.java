@@ -16,5 +16,4 @@ public class InfoDemande {
     private Integer quantiteEnlevee;
 
     private String nomTypeDechet;
-
 }
