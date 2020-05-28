@@ -23,6 +23,8 @@ public class Demande implements Serializable {
     private Date dateDemande;
     @Column(name = "DATEENLEVEMENT")
     private Date dateElevement;
+    @Column(name = "ATRAITER")
+    private Integer aTraiter;
     @Column(name = "SIRET")
     private Long siret;
     @Column(name = "NOTOURNEE")

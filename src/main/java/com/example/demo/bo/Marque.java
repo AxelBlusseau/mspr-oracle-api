@@ -14,7 +14,7 @@ public class Marque implements Serializable {
     @Column(name = "NOMARQUE")
     private Integer id;
 
-    @Column(name = "NOM")
+    @Column(name = "NOMMARQUE")
     private String nom;
 
     public Integer getId() {

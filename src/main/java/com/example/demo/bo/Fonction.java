@@ -21,7 +21,7 @@ public class Fonction implements Serializable {
     @Column(name = "NOFONCTION")
     private Integer id;
 
-    @Column(name = "NOM")
+    @Column(name = "NOMFONCTION")
     private String nom;
 
     @Override

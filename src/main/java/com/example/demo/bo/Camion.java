@@ -20,6 +20,8 @@ public class Camion implements Serializable {
     private String id;
     @Column(name = "DATEACHAT")
     private Date dateAchat;
+    @Column(name = "VOLUME")
+    private Integer volume;
     @Column(name = "NOMODELE")
     private Integer noModele;
     @Column(name = "NOSITE")

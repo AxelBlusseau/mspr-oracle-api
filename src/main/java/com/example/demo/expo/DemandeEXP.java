@@ -66,6 +66,7 @@ public class DemandeEXP {
     @GetMapping(path = "demandePostSaisieAgent")
     public ResponseEntity<List<Demande>> readDemandeDate(@RequestParam String dateDemande) {
 
+        //localhost:8080/demandePostSaisieAgent?dateDemande=24/05/2020
         String requete = "select * from demande where datedemande > ?";
 
         List<Demande> lstDemande = this.jdbcTemplate.query(requete, new Object[] { dateDemande }, (result, row) -> {
@@ -73,6 +74,26 @@ public class DemandeEXP {
             demande.setId(result.getInt( "NODEMANDE"));
             demande.setSiret(result.getLong( "SIRET"));
             demande.setNoSite(result.getInt( "NOSITE"));
+            demande.setDateElevement(result.getDate( "DATEENLEVEMENT"));
+
+            return demande;
+        });
+
+        return ResponseEntity.ok(lstDemande);
+    }
+
+    @GetMapping(path = "demandeDateTournee")
+    public ResponseEntity<List<Demande>> readDemandeDateTournee(@RequestParam String dateTournee) {
+
+        //localhost:8080/demandeDateTournee?dateTournee=24/05/2020
+        String requete = "select * from demande d join tournee t on d.notournee = t.notournee where t.datetournee = ?";
+
+        List<Demande> lstDemande = this.jdbcTemplate.query(requete, new Object[] { dateTournee }, (result, row) -> {
+            Demande demande = new Demande();
+            demande.setId(result.getInt( "NODEMANDE"));
+            demande.setSiret(result.getLong( "SIRET"));
+            demande.setNoSite(result.getInt( "NOSITE"));
+            demande.setDateDemande(result.getDate( "DATEDEMANDE"));
             demande.setDateElevement(result.getDate( "DATEENLEVEMENT"));
 
             return demande;

@@ -21,7 +21,7 @@ public class Site implements Serializable {
     @Id
     @Column(name = "NOSITE")
     private Integer id;
-    @Column(name = "NOM")
+    @Column(name = "NOMSITE")
     private String nom;
     @Column(name = "NOVILLE")
     private Integer noVille;

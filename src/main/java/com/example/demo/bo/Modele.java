@@ -21,7 +21,7 @@ public class Modele implements Serializable {
     @Id
     @Column(name = "NOMODELE")
     private Integer id;
-    @Column(name = "NOM")
+    @Column(name = "NOMMODELE")
     private String nom;
     @Column(name = "NOMARQUE")
     private Integer nomMarque;

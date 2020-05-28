@@ -23,6 +23,8 @@ public class TypeDechet implements Serializable {
     private String nomTypeDeDechet;
     @Column(name = "NIVDANGER")
     private Integer nivDanger;
+    @Column(name = "VOLUMEUNITAIRE")
+    private Integer volumeUnitaire;
     @Column(name = "SEUIL")
     private String seuil;
     @Column(name = "TARIFFORFAITAIRE")
