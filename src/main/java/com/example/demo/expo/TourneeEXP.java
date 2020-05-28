@@ -23,6 +23,7 @@ public class TourneeEXP {
     @GetMapping(path = "tourneesEmployeUneDate")
     public ResponseEntity<List<Tournee>> readEmployeTourneeUneDate(@RequestParam Integer idEmploye, @RequestParam String dateTournee ) {
 
+        //tourneesEmployeUneDate?idEmploye=1&dateTournee=26/05/2020
         String requete = "select * from tournee t join employe e on t.noemploye = e.noemploye where e.noemploye = ? and t.datetournee = ?";
 
         List<Tournee> lstTourneeEmployeUneDate = this.jdbcTemplate.query(requete, new Object[] { idEmploye , dateTournee }, (result, row) -> {
