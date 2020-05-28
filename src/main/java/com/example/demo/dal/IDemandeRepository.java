@@ -16,9 +16,9 @@ import java.util.List;
 @RepositoryRestResource(path = "demandes-list", collectionResourceRel = "demandes_data")
 public interface IDemandeRepository extends CrudRepository<Demande, Integer> {
     //List<Demande> findAllByDateDemandeAfter(@Param("date") Date date);
-    List<Demande> findAllByDateDemande(@Param("date") Date date);
+    List<Demande> getByDateDemande(@Param("date") Date date);
 
-    @Query("select d from demande d inner join tournee t on d.id = t.id " +
+    @Query("select d.id from demande d inner join tournee t on d.id = t.id " +
             "where t.dateTournee = :dateTournee")
     List<Demande> getAllByDateTournee(@Param("date") Date dateTournee);
 }

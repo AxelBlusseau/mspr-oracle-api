@@ -23,6 +23,9 @@ public class Tournee implements Serializable {
     private String noImmatric;
     @Column(name = "NOEMPLOYE")
     private Integer noEmploye;
+    @OneToOne()
+    @JoinColumn(name="NODEMANDE")
+    private Demande demande;
 
     @Override
     public String toString() {

@@ -25,8 +25,7 @@ public class Demande implements Serializable {
     private Date dateElevement;
     @Column(name = "SIRET")
     private Long siret;
-    @OneToOne(fetch=FetchType.LAZY, mappedBy="tournee")
-    @Column(name = "NOTOURNEE")
+    @OneToOne(fetch=FetchType.LAZY, mappedBy="demande")
     private Tournee tournee;
     @Column(name = "NOSITE")
     private Integer noSite;
