@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,6 +15,7 @@ import java.util.Date;
 @Table(name="TOURNEE")
 public class Tournee implements Serializable {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NOTOURNEE")
     private Integer id;
     @Column(name = "DATETOURNEE")
