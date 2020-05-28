@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-@Entity
+@Entity(name = "demande")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,7 +17,6 @@ import java.util.Date;
 public class Demande implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NODEMANDE")
     private Integer id;
     @Column(name = "DATEDEMANDE")
