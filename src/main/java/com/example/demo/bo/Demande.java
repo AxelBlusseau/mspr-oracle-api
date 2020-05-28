@@ -25,8 +25,8 @@ public class Demande implements Serializable {
     private Date dateElevement;
     @Column(name = "SIRET")
     private Long siret;
-    @OneToOne(fetch=FetchType.LAZY, mappedBy="demande")
-    private Tournee tournee;
+    @Column(name = "NOTOURNEE")
+    private Integer noTournee;
     @Column(name = "NOSITE")
     private Integer noSite;
 
@@ -37,7 +37,7 @@ public class Demande implements Serializable {
         sb.append(", dateDemande=").append(dateDemande);
         sb.append(", dateElevement=").append(dateElevement);
         sb.append(", siret=").append(siret);
-        sb.append(", noTournee=").append(tournee);
+        sb.append(", noTournee=").append(noTournee);
         sb.append(", noSite=").append(noSite);
         sb.append('}');
         return sb.toString();
