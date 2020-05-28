@@ -63,4 +63,24 @@ public class DemandeEXP {
         return ResponseEntity.ok(lstDemande);
     }
 
+    @GetMapping(path = "demandePostSaisieAgent")
+    public ResponseEntity<List<Demande>> readDemandeDate(@RequestParam String dateDemande) {
+
+        String requete = "select * from demande where datedemande > ?";
+
+        List<Demande> lstDemande = this.jdbcTemplate.query(requete, new Object[] { dateDemande }, (result, row) -> {
+            Demande demande = new Demande();
+            demande.setId(result.getInt( "NODEMANDE"));
+            demande.setSiret(result.getLong( "SIRET"));
+            demande.setNoSite(result.getInt( "NOSITE"));
+            demande.setDateElevement(result.getDate( "DATEENLEVEMENT"));
+
+            return demande;
+        });
+
+        return ResponseEntity.ok(lstDemande);
+    }
+
+
+
 }
