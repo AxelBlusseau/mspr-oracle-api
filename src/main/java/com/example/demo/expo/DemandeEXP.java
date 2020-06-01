@@ -44,9 +44,9 @@ public class DemandeEXP {
     public ResponseEntity<String> readInfoDemande(@RequestBody Demande demande) {
 
         String requete = "INSERT INTO DEMANDE \n" +
-                "(DATEDEMANDE, DATEENLEVEMENT, SIRET, NOTOURNEE, NOSITE) \n" +
+                "(DATEDEMANDE, DATEENLEVEMENT, SIRET, NOSITE) \n" +
                 "VALUES \n" +
-                "(?, ?, ?, ?, ?)";
+                "(?, ?, ?, ?)";
 
         jdbcTemplate.update(requete, demande.getDateDemande(), demande.getDateElevement(), demande.getSiret(), demande.getNoTournee(), demande.getNoSite());
 
