@@ -54,10 +54,9 @@ public class DemandeEXP {
     }
 
 
-    //insertDetailDemande?qte=120&remarque=oui&nomTypeDechet=4
-    @GetMapping(path = "insertDetailDemande")
-    public ResponseEntity<String> insertDetailDemande(@RequestParam Integer qte, @RequestParam String remarque,
-                                                       @RequestParam Integer nomTypeDechet) {
+    @PostMapping(path = "insertDetailDemande")
+    public ResponseEntity<String> insertDetailDemande(@RequestBody Integer qte, @RequestBody String remarque,
+                                                       @RequestBody Integer noTypeDechet) {
 
         //Récupération du dernier id demande
         String requete = "select nodemande from DEMANDE where rownum < 2 order by nodemande DESC";
