@@ -2,6 +2,7 @@ package com.example.demo.expo;
 
 import com.example.demo.bo.Demande;
 import com.example.demo.bo.Tournee;
+import com.example.demo.dataobject.DetailDemande;
 import com.example.demo.dataobject.InfoDemande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,8 +56,7 @@ public class DemandeEXP {
 
 
     @PostMapping(path = "insertDetailDemande")
-    public ResponseEntity<String> insertDetailDemande(@RequestBody Integer qte, @RequestBody String remarque,
-                                                       @RequestBody Integer noTypeDechet) {
+    public ResponseEntity<String> insertDetailDemande(@RequestBody DetailDemande detailDemande) {
 
         //Récupération du dernier id demande
         String requete = "select nodemande from DEMANDE where rownum < 2 order by nodemande DESC";
@@ -68,7 +68,7 @@ public class DemandeEXP {
                 "VALUES \n" +
                 "(?, ?, ?, ?)";
 
-        jdbcTemplate.update(req2, qte, remarque, noDemande, noTypeDechet);
+        jdbcTemplate.update(req2, detailDemande.getQte(), detailDemande.getRemarque(), noDemande, detailDemande.getNoTypeDechet());
 
         return ResponseEntity.ok("Demande insérée");
     };
