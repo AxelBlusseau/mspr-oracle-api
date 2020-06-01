@@ -46,13 +46,15 @@ public class DemandeEXP {
         String requete = "INSERT INTO DEMANDE \n" +
                 "(DATEDEMANDE, DATEENLEVEMENT, SIRET, NOTOURNEE, NOSITE) \n" +
                 "VALUES \n" +
-                "(?, ?, ?, ?, ?);";
+                "(?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(requete, demande.getDateDemande(), demande.getDateElevement(), demande.getSiret(), demande.getNoTournee(), demande.getNoSite());
 
         return ResponseEntity.ok("Demande insérée");
     }
 
+
+    //insertDetailDemande?qte=120&remarque=oui&nomTypeDechet=4
     @GetMapping(path = "insertDetailDemande")
     public ResponseEntity<String> insertDetailDemande(@RequestParam Integer qte, @RequestParam String remarque,
                                                        @RequestParam Integer nomTypeDechet) {
@@ -62,9 +64,14 @@ public class DemandeEXP {
 
         Integer noDemande = jdbcTemplate.queryForObject(requete, Integer.class);
 
+        String req2 = "INSERT INTO DETAILDEMANDE \n" +
+                "(QUANTITEENLEVEE, REMARQUE, NODEMANDE, NOTYPEDECHET) \n" +
+                "VALUES \n" +
+                "(?, ?, ?, ?)";
 
+        jdbcTemplate.update(req2, qte, remarque, noDemande, nomTypeDechet);
 
-        return ResponseEntity.ok("oui");
+        return ResponseEntity.ok("Demande insérée");
     };
 
 
