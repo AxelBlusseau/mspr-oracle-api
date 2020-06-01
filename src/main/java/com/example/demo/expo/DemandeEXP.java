@@ -6,10 +6,7 @@ import com.example.demo.dataobject.InfoDemande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,6 +38,19 @@ public class DemandeEXP {
         });
 
         return ResponseEntity.ok(lstInfoDemande);
+    }
+
+    @PostMapping(path = "demande")
+    public ResponseEntity<String> readInfoDemande(@RequestBody Demande demande) {
+
+        String requete = "INSERT INTO DEMANDE \n" +
+                "(DATEDEMANDE, DATEENLEVEMENT, SIRET, NOTOURNEE, NOSITE) \n" +
+                "VALUES \n" +
+                "(to_date(?, 'yyyy/mm/dd'), to_date(?, 'yyyy/mm/dd'), ?, ?, ?);";
+
+        jdbcTemplate.update(requete, demande.getDateDemande().toString(), demande.getDateElevement().toString(), demande.getSiret(), demande.getNoTournee(), demande.getNoSite());
+
+        return ResponseEntity.ok("Demande insérée");
     }
 
     @GetMapping(path = "demandeNonAffectee")
