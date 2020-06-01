@@ -68,7 +68,7 @@ public class DemandeEXP {
                 "VALUES \n" +
                 "(?, ?, ?, ?)";
 
-        jdbcTemplate.update(req2, qte, remarque, noDemande, nomTypeDechet);
+        jdbcTemplate.update(req2, qte, remarque, noDemande, noTypeDechet);
 
         return ResponseEntity.ok("Demande insérée");
     };
