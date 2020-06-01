@@ -46,12 +46,27 @@ public class DemandeEXP {
         String requete = "INSERT INTO DEMANDE \n" +
                 "(DATEDEMANDE, DATEENLEVEMENT, SIRET, NOTOURNEE, NOSITE) \n" +
                 "VALUES \n" +
-                "(to_date(?, 'yyyy/mm/dd'), to_date(?, 'yyyy/mm/dd'), ?, ?, ?);";
+                "(?, ?, ?, ?, ?);";
 
-        jdbcTemplate.update(requete, demande.getDateDemande().toString(), demande.getDateElevement().toString(), demande.getSiret(), demande.getNoTournee(), demande.getNoSite());
+        jdbcTemplate.update(requete, demande.getDateDemande(), demande.getDateElevement(), demande.getSiret(), demande.getNoTournee(), demande.getNoSite());
 
         return ResponseEntity.ok("Demande insérée");
     }
+
+    @GetMapping(path = "insertDetailDemande")
+    public ResponseEntity<String> insertDetailDemande(@RequestParam Integer qte, @RequestParam String remarque,
+                                                       @RequestParam Integer nomTypeDechet) {
+
+        //Récupération du dernier id demande
+        String requete = "select nodemande from DEMANDE where rownum < 2 order by nodemande DESC";
+
+        Integer noDemande = jdbcTemplate.queryForObject(requete, Integer.class);
+
+
+
+        return ResponseEntity.ok("oui");
+    };
+
 
     @GetMapping(path = "demandeNonAffectee")
     public ResponseEntity<List<Demande>> readDemandeNoTournee() {
